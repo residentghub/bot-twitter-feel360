@@ -198,17 +198,7 @@ fs.readdir(__dirname + '/images', function(err, files) {
     // run the function every 12 hrs
     setInterval(function(){
       searchPhraseOrHashtag(images)
-    //}, 720*60*1000);
-    }, 5*60*1000);
+    }, 720*60*1000);
+    //}, 1*60*1000);
   }
 });
-
-
-
-// launch the function once
-//searchPhraseOrHashtag()
-
-// run the function every 60 minutes
-/*setInterval(function(){
-  searchPhraseOrHashtag()
-}, 60*60*1000);*/
