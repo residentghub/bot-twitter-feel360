@@ -61,7 +61,13 @@ function upload_random_image(images){
 }
 
 
-function searchPhraseOrHashtag(images) {    
+function searchPhraseOrHashtag(images) {
+
+    /*Searching:
+    me quiere dar gripa,
+    gripa y yo en el trabajo,
+    maldita gripa,    
+    */
     
     //var TWITTER_SEARCH_PHRASE = 'gripa OR resfriado OR me quiere dar gripa OR gripa y yo en el trabajo OR maldita gripa';
     var TWITTER_SEARCH_PHRASE = 'gripa OR resfriado';
@@ -102,39 +108,52 @@ function searchPhraseOrHashtag(images) {
               console.log();
               console.log('Favorited: ', `https://twitter.com/${username}/status/${tweetId}`)
 
-              /* Here TODO ALL */            
-
-              /*Searching:
-                me quiere dar gripa,
-                gripa y yo en el trabajo,
-                maldita gripa,    
-              */
-
-              /*var finding_text_dar     = tweetText.search(/dar/i);
-              var finding_text_trabajo = tweetText.search(/trabajo/i);
-              var finding_text_maldita = tweetText.search(/maldita/i);*/  
-
-              var image_path,
-                  b64content;
-
+              /* Here TODO ALL */
               console.log('Opening an gif...');
+              var image_path = path.join(__dirname, '/images/' + random_from_array(images)),
+              b64content = fs.readFileSync(image_path, { encoding: 'base64' });                            
 
-              if (tweetText.includes("dar")) {
-                image_path = path.join(__dirname, '/images/dar/' + random_from_array(images));
-                b64content = fs.readFileSync(image_path, { encoding: 'base64' });
-              } else if(tweetText.includes("trabajo")) {
-                image_path = path.join(__dirname, '/images/trabajo/' + random_from_array(images));
-                b64content = fs.readFileSync(image_path, { encoding: 'base64' });
-              } else if () {
+              var randomIndexText = "";
+              var substringImagePath = image_path.slice(-6);
 
-              } else {
-
+              switch(substringImagePath) {
+                case "01.gif":
+                    randomIndexText = "¿Dijiste gripa? Aquí te va un tip para convertir tu odio en bienestar. #TeOdiamosGripa";
+                    break;
+                case "02.gif":
+                    randomIndexText = "¿Gripa? Lánzate a la farmacia por un Feel 360 para que mañana puedas decir:";
+                    break;
+                case "03.gif":
+                    randomIndexText = "¿Estás malito? Aquí te va el remedio para la gripa. #TeOdiamosGripa";
+                    break;
+                case "04.gif":
+                    randomIndexText = "¿Gripa? Haz match con Feel 360 y convierte tu odio en bienestar. #TeOdiamosGripa";
+                    break;
+                case "05.gif":
+                    randomIndexText = "¿Con gripa en el trabajo? Feel 360 se rifa el tiro con la gripa por ti. #TeOdiamosGripa";
+                    break;
+                case "06.gif":
+                    randomIndexText = "No permitiré que la gripa arruine tu día laboral. Aquí te va el remedio. #TeOdiamosGripa";
+                    break;
+                case "07.gif":
+                    randomIndexText = "No necesitas un doble, necesitas un antigripal efectivo como Feel 360. #TeOdiamosGripa";
+                    break;
+                case "08.gif":
+                    randomIndexText = "¿Trabajando con gripa? Acá te va un remedio efectivo para la gripa. #TeOdiamosGripa";
+                    break;
+                case "09.gif":
+                    randomIndexText = "Bájale a tu odio por la gripa y lánzate por un Feel 360. #TeOdiamosGripa";
+                    break;
+                case "10.gif":
+                    randomIndexText = "¿Odio por la gripa? Convierte tu odio en bienestar con Feel 360. #TeOdiamosGripa";
+                    break;
+                case "11.gif":
+                    randomIndexText = "¿De malas por la gripa? Checa este tip. #TeOdiamosGripa";
+                    break;
+                case "12.gif":
+                    randomIndexText = "La gripa no se quita con un tuit. Lánzate a la farmacia por un Feel 360. #TeOdiamosGripa";
+                    break;                
               }
-
-              
-
-
-              
 
 
               /*T.post('media/upload', { media_data: b64content }, function (err, data, response) {
